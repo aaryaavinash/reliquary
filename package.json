@@ -1,7 +1,7 @@
 {
   "name": "reliquary",
   "private": true,
-  "description": "Standalone Reliquary world from Dioramas.",
+  "description": "An after-hours museum imagined around six objects, two thousand years, and the small light placed in each visitor\u2019s hand.",
   "license": "MIT",
   "version": "0.1.0",
   "type": "module",

@@ -1,3 +1,4 @@
+<!-- ORIGINAL (preserved, not deleted — disabled by comment): nested project entry -->
 <!doctype html>
 <html lang="en">
 <head>

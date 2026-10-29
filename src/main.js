@@ -1,35 +1,34 @@
 import './tailwind.css';
-import { Engine, THREE, normalize, prepModel, damp, clamp, smooth, lerp, studioEnvironment } from '../../src/core/engine.js';
-import { Assets } from '../../src/core/assets.js';
-import { Pointer } from '../../src/core/input.js';
-import { smoothScroll, gsap, reveal, elementProgress } from '../../src/core/scroll.js';
-// ORIGINAL (preserved, not deleted — disabled by comment): import { preloader, cursor, magnetic, worldNav } from '../../src/core/ui.js';
-import { preloader, cursor, magnetic } from '../../src/core/ui.js';
-import { PlanarReflection } from '../../src/core/reflector.js';
-import { VolumetricSpotEffect } from '../../src/core/volumetric.js';
-import { bakeTexture, fbmNormal } from '../../src/core/textures.js';
+import { Engine, THREE, normalize, prepModel, damp, clamp, smooth, lerp, studioEnvironment } from './core/engine.js';
+import { Assets } from './core/assets.js';
+import { Pointer } from './core/input.js';
+import { smoothScroll, gsap, reveal, elementProgress } from './core/scroll.js';
+import { preloader, cursor, magnetic } from './core/ui.js';
+import { PlanarReflection } from './core/reflector.js';
+import { VolumetricSpotEffect } from './core/volumetric.js';
+import { bakeTexture, fbmNormal } from './core/textures.js';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 // ─── The collection ────────────────────────────────────────────────────────────
 const D = Math.PI / 180;
 const DBG = new URLSearchParams(location.search);
 const RELICS = [
-  { key: 'guardian', file: 'models/reliquary/guardian.glb', num: 'I', name: 'Guardian Lion', meta: 'Granite · Fujian, Ming dynasty · c. 1520',
+  { key: 'guardian', file: 'models/guardian.glb', num: 'I', name: 'Guardian Lion', meta: 'Granite · Fujian, Ming dynasty · c. 1520',
     desc: 'One of a pair that flanked a temple gate for four centuries. The ball beneath its paw is the world; the lichen is its own.',
     pos: [0.95, 0, 0], plinth: [1.75, 0.34, 1.35], h: 1.75, yaw: 22 * D, lampPower: 30, view: [0.05, 1.08, 4.35], look: [0.55, 1.28, 0] },
-  { key: 'helmet', file: 'models/reliquary/helmet.glb', num: 'II', name: 'Corinthian Helmet', meta: 'Bronze · Argos, Greece · c. 480 BC',
+  { key: 'helmet', file: 'models/helmet.glb', num: 'II', name: 'Corinthian Helmet', meta: 'Bronze · Argos, Greece · c. 480 BC',
     desc: 'Beaten from a single sheet. The dent above the left eye was made by a spear, not by time. Whoever wore it survived the blow.',
     pos: [-2.4, 0, -8], plinth: [0.9, 1.12, 0.9], h: 0.44, yaw: 56 * D, view: [-0.85, 1.5, -6.55], look: [-2.4, 1.33, -8] },
-  { key: 'mask', file: 'models/reliquary/mask.glb', num: 'III', name: 'Jade Funerary Mask', meta: 'Jade, shell, obsidian · Palenque · 7th c.',
+  { key: 'mask', file: 'models/mask.glb', num: 'III', name: 'Jade Funerary Mask', meta: 'Jade, shell, obsidian · Palenque · 7th c.',
     desc: 'Three hundred and forty tesserae, fitted without a pattern book. It was made to be seen by one person, once, in the dark.',
     pos: [2.4, 0, -15], plinth: [0.9, 1.04, 0.9], h: 0.56, yaw: -56 * D, view: [0.85, 1.5, -13.55], look: [2.4, 1.32, -15] },
-  { key: 'bust', file: 'models/reliquary/bust.glb', num: 'IV', name: 'Portrait of a Young Woman', meta: 'Carrara marble · Rome · c. AD 120',
+  { key: 'bust', file: 'models/bust.glb', num: 'IV', name: 'Portrait of a Young Woman', meta: 'Carrara marble · Rome · c. AD 120',
     desc: 'Her braids were fashionable for about eleven years. The sculptor left one chisel stroke in her hair unpolished. Find it.',
     pos: [-2.4, 0, -22], plinth: [0.9, 1.0, 0.9], h: 0.74, yaw: 50 * D, view: [-0.85, 1.52, -20.5], look: [-2.4, 1.36, -22] },
-  { key: 'amphora', file: 'models/reliquary/amphora.glb', num: 'V', name: 'Black-figure Amphora', meta: 'Terracotta · Athens · c. 530 BC',
+  { key: 'amphora', file: 'models/amphora.glb', num: 'V', name: 'Black-figure Amphora', meta: 'Terracotta · Athens · c. 530 BC',
     desc: 'A prize for the footrace. It held forty litres of olive oil from the sacred trees. The runners have not stopped running since.',
     pos: [2.4, 0, -29], plinth: [0.9, 0.62, 0.9], h: 0.98, yaw: -40 * D, view: [0.85, 1.45, -27.4], look: [2.4, 1.1, -29] },
-  { key: 'astrolabe', file: 'models/reliquary/astrolabe.glb', num: 'VI', name: 'Planispheric Astrolabe', meta: 'Brass, walnut · Toledo · 1068',
+  { key: 'astrolabe', file: 'models/astrolabe.glb', num: 'VI', name: 'Planispheric Astrolabe', meta: 'Brass, walnut · Toledo · 1068',
     desc: 'A computer for the sky, accurate to a few minutes of arc. Set the rete to tonight and it will still tell you when dawn comes.',
     pos: [0, 0, -37], plinth: [1.0, 0.98, 0.8], h: 0.74, yaw: 0, rough: 1.5, env: 0.8, lampPower: 7, view: [0, 1.5, -34.75], look: [0, 1.34, -37] },
 ];
@@ -177,7 +176,7 @@ for (const z of bays) {
   end.receiveShadow = true;
   hall.add(end);
   // The court beyond: a moonlit cloister plate, lifted slightly so the bloom catches the moon.
-  const courtTex = new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}img/reliquary/court.webp`);
+  const courtTex = new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}img/court.webp`);
   courtTex.colorSpace = THREE.SRGBColorSpace;
   const court = new THREE.Mesh(new THREE.PlaneGeometry(4.4, 4.4 * 2200 / 1160), new THREE.MeshBasicMaterial({ map: courtTex, fog: false, color: new THREE.Color(0.62, 0.72, 0.95) }));
   court.position.set(0, 2.5, HALL.z1 - 0.6);
@@ -533,7 +532,6 @@ engine.onTick((dt, t) => {
 });
 
 // ─── Boot ─────────────────────────────────────────────────────────────────────
-// ORIGINAL (preserved, not deleted — disabled by comment): worldNav('reliquary', { theme: 'dark' });
 cursor({ color: '#ffe9c4', blend: 'normal', size: 30 });
 magnetic();
 const lenis = smoothScroll({ lerp: 0.075 });

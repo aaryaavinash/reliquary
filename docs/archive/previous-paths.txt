@@ -1,0 +1,22 @@
+// ORIGINAL (preserved, not deleted — disabled by comment): previous nested paths
+// import { Engine, THREE, normalize, prepModel, damp, clamp, smooth, lerp, studioEnvironment } from '../../src/core/engine.js';
+// import { Assets } from '../../src/core/assets.js';
+// import { Pointer } from '../../src/core/input.js';
+// import { smoothScroll, gsap, reveal, elementProgress } from '../../src/core/scroll.js';
+// // ORIGINAL (preserved, not deleted — disabled by comment): import { preloader, cursor, magnetic, worldNav } from '../../src/core/ui.js';
+// import { preloader, cursor, magnetic } from '../../src/core/ui.js';
+// import { PlanarReflection } from '../../src/core/reflector.js';
+// import { VolumetricSpotEffect } from '../../src/core/volumetric.js';
+// import { bakeTexture, fbmNormal } from '../../src/core/textures.js';
+//   { key: 'guardian', file: 'models/reliquary/guardian.glb', num: 'I', name: 'Guardian Lion', meta: 'Granite · Fujian, Ming dynasty · c. 1520',
+//   { key: 'helmet', file: 'models/reliquary/helmet.glb', num: 'II', name: 'Corinthian Helmet', meta: 'Bronze · Argos, Greece · c. 480 BC',
+//   { key: 'mask', file: 'models/reliquary/mask.glb', num: 'III', name: 'Jade Funerary Mask', meta: 'Jade, shell, obsidian · Palenque · 7th c.',
+//   { key: 'bust', file: 'models/reliquary/bust.glb', num: 'IV', name: 'Portrait of a Young Woman', meta: 'Carrara marble · Rome · c. AD 120',
+//   { key: 'amphora', file: 'models/reliquary/amphora.glb', num: 'V', name: 'Black-figure Amphora', meta: 'Terracotta · Athens · c. 530 BC',
+//   { key: 'astrolabe', file: 'models/reliquary/astrolabe.glb', num: 'VI', name: 'Planispheric Astrolabe', meta: 'Brass, walnut · Toledo · 1068',
+//   const courtTex = new THREE.TextureLoader().load(`${import.meta.env.BASE_URL}img/reliquary/court.webp`);
+// // ORIGINAL (preserved, not deleted — disabled by comment): worldNav('reliquary', { theme: 'dark' });
+//   <link rel="stylesheet" href="./examples/reliquary/style.css">
+//   <script type="module" src="./examples/reliquary/main.js"></script>
+// // ORIGINAL (preserved, not deleted — disabled by comment): import { preloader, cursor, magnetic, worldNav } from './core/ui.js';
+// // ORIGINAL (preserved, not deleted — disabled by comment): worldNav('reliquary', { theme: 'dark' });

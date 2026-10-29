@@ -1,0 +1,16 @@
+/* ORIGINAL (preserved, not deleted — disabled by comment): gallery navigation CSS */
+
+.tw-nav { position: fixed; z-index: 9000; display: flex; align-items: center; gap: 2px; padding: 5px; border-radius: 999px;
+  font: 500 11px/1 ui-monospace, 'SF Mono', Menlo, Consolas, monospace; letter-spacing: .04em;
+  backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); transition: opacity .4s; }
+.tw-nav-bl { left: 16px; bottom: 16px; } .tw-nav-br { right: 16px; bottom: 16px; }
+.tw-nav-tl { left: 16px; top: 16px; } .tw-nav-tr { right: 16px; top: 16px; }
+.tw-nav-dark { background: rgba(12,12,14,.55); color: rgba(255,255,255,.86); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1); }
+.tw-nav-light { background: rgba(255,255,255,.6); color: rgba(10,10,12,.86); box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+.tw-nav a { color: inherit; text-decoration: none; display: grid; place-items: center; height: 28px; min-width: 28px; border-radius: 999px; transition: background .25s; }
+.tw-nav a:hover { background: color-mix(in srgb, currentColor 14%, transparent); }
+.tw-nav-home svg { width: 16px; height: 16px; }
+.tw-nav-step { font-size: 16px; line-height: 1; padding-bottom: 2px; }
+.tw-nav-count { padding: 0 6px; font-variant-numeric: tabular-nums; }
+.tw-nav-count em { font-style: normal; opacity: .45; }
+@media (max-width: 640px) { .tw-nav { transform: scale(.92); transform-origin: left bottom; } }
