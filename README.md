@@ -6,7 +6,7 @@
 
 An after-hours museum imagined around six objects, two thousand years, and the small light placed in each visitor’s hand. The site asks what changes when a collection is encountered without the usual flood of gallery light.
 
-The planned project address is `https://reliquary.aarya.cyou/`. The site is an interactive concept; its booking, purchase, or application invitations do not complete real transactions.
+The project is live at `https://reliquary.aarya.cyou/`. The site is an interactive concept; its booking, purchase, or application invitations do not complete real transactions.
 
 ## The idea
 
@@ -72,7 +72,7 @@ The build writes to `dist/`; preview serves it at `http://127.0.0.1:5191/`.
 
 ## Deployment
 
-For Cloudflare Pages, connect the repository's `main` branch. Use `npm run build` as the build command, `dist` as the output directory, and the repository root as the root directory. The React (Vite) preset supplies the build values; `wrangler.jsonc` also records the Pages output directory. The intended address is `https://reliquary.aarya.cyou/`; DNS and a Pages project must be connected separately before it becomes live.
+For Cloudflare Pages, connect the repository's `main` branch. Use `npm run build` as the build command, `dist` as the output directory, and the repository root as the root directory. The React (Vite) preset supplies the build values; `wrangler.jsonc` also records the Pages output directory. The live site is `https://reliquary.aarya.cyou/`; pushes to `main` deploy through the connected GitHub repository.
 
 ## Repository guide
 
