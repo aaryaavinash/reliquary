@@ -1,8 +1,10 @@
+import './tailwind.css';
 import { Engine, THREE, normalize, prepModel, damp, clamp, smooth, lerp, studioEnvironment } from '../../src/core/engine.js';
 import { Assets } from '../../src/core/assets.js';
 import { Pointer } from '../../src/core/input.js';
 import { smoothScroll, gsap, reveal, elementProgress } from '../../src/core/scroll.js';
-import { preloader, cursor, magnetic, worldNav } from '../../src/core/ui.js';
+// ORIGINAL (preserved, not deleted — disabled by comment): import { preloader, cursor, magnetic, worldNav } from '../../src/core/ui.js';
+import { preloader, cursor, magnetic } from '../../src/core/ui.js';
 import { PlanarReflection } from '../../src/core/reflector.js';
 import { VolumetricSpotEffect } from '../../src/core/volumetric.js';
 import { bakeTexture, fbmNormal } from '../../src/core/textures.js';
@@ -531,7 +533,7 @@ engine.onTick((dt, t) => {
 });
 
 // ─── Boot ─────────────────────────────────────────────────────────────────────
-worldNav('reliquary', { theme: 'dark' });
+// ORIGINAL (preserved, not deleted — disabled by comment): worldNav('reliquary', { theme: 'dark' });
 cursor({ color: '#ffe9c4', blend: 'normal', size: 30 });
 magnetic();
 const lenis = smoothScroll({ lerp: 0.075 });
